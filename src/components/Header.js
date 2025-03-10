@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants"; // named export
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/customhook/useOnlineStatus";
 
 export const Header = () => {
   const [LoginBtnState, setLoginBtnState] = useState("Login");
@@ -15,26 +16,31 @@ export const Header = () => {
 
   console.log("Header called");
 
+  const onlineStatus = useOnlineStatus();
+
   return (
-    <div className="Mainheader">
+    <div className="flex justify-between bg-orange-100 shadow-lg m-2 sm:bg-green-200">
       <div className="logoContainer">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-30 rounded-3xl" src={LOGO_URL} />
       </div>
-      <div className="Nav-Item">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-2">
+            Online Status : {onlineStatus ? "✅" : "🔴"}
+          </li>
+          <li className="px-2">
             <Link to={"/"}>Home</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to={"/about"}>About us</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li>
-            <Link to={"/contact"}>Cart</Link>
+          <li className="px-2">
+            <Link to={"/grocery"}>Grocery</Link>
           </li>
-          <button
+          <button className="px-2"
             onClick={() => {
               LoginBtnState === "Login"
                 ? setLoginBtnState("Logout")

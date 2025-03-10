@@ -1,7 +1,7 @@
-const User = () => {
+const User = ({name}) => {
   return (
     <div className="user-card">
-      <h1>Name: Yousuf</h1>
+      <h1>Name: {name}</h1>
       <p>Location: Pune</p>
       <p>contact: yousuf@contact</p>
     </div>

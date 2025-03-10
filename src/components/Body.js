@@ -2,8 +2,8 @@ import ResCard from "./ResCard"; // defalut import
 import { useEffect, useState } from "react"; // named import
 import Shimmer from "./Shimmer";
 import resList from "../utils/mockData";
-import { ApiDami } from "../utils/mockData";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/customhook/useOnlineStatus";
 
 let DemoListJS = [
   {
@@ -84,14 +84,21 @@ const Body = () => {
     // console.log(json.data?.cards[1]?.card.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
+  const OnlineStatus = useOnlineStatus();
+
+  if (OnlineStatus === false)
+    return (
+      <h1>Looks like you're offline ! Please check your internet connection</h1>
+    );
+
   // conditional Rendering
   return DemoList.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="Body">
-      <div className="search">
+      <div className="search p-4 m-4 ">
         <input
-          className="Searchfield"
+          className="border border-solid border-black p-2"
           type="text"
           placeholder="Search Your Food"
           value={searchText}
@@ -99,8 +106,9 @@ const Body = () => {
             setsearchText(e.target.value);
           }}
         ></input>
+
         <button
-          className="searchBTN"
+          className="searchBTN px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
             const filterRestura = DemoList.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -110,51 +118,48 @@ const Body = () => {
         >
           Search
         </button>
-        <div className="filter">
-          <button
-            className="filter-btn"
-            onClick={() => {
-              setDemoList(
-                (DemoList = DemoList.filter(
-                  (resto) => resto.info.avgRating >= 4.5
-                ))
-              );
-            }}
-          >
-            Top Rated Restuarant
-          </button>
-        </div>
+
+        <button
+          className="filter-btn x-5 py-2 bg-gray-100 m-4 rounded-lg"
+          onClick={() => {
+            setDemoList(
+              (DemoList = DemoList.filter(
+                (resto) => resto.info.avgRating >= 4.5
+              ))
+            );
+          }}
+        >
+          Top Rated Restuarant
+        </button>
       </div>
-      <div className="resContainer">
-        <div className="resC">
-          {/* for hardcoded values... */}
-          {/* <ResCard
+      <div className="flex flex-wrap justify-center">
+        {/* for hardcoded values... */}
+        {/* <ResCard
             restoname="Tittos restaurant"
             dish="biryani"
             rating="4.4 Stars"
             avgtime="35 Min"
           /> */}
 
-          {/* Bad practice */}
-          {/* <ResCard resdata = { resList[0] }/>
+        {/* Bad practice */}
+        {/* <ResCard resdata = { resList[0] }/>
           <ResCard resdata = { resList[1] }/>
           <ResCard resdata = { resList[2] }/>
           <ResCard resdata = { resList[3] }/>
           <ResCard resdata = { resList[4] }/>
           <ResCard resdata = { resList[5] }/> */}
 
-          {/* much better way */}
-          {/* using index as a key is ait-pattern (badPractice) always uiquie id */}
+        {/* much better way */}
+        {/* using index as a key is ait-pattern (badPractice) always uiquie id */}
 
-          {filterRes.map((restuarant) => (
-            <Link
-              key={restuarant.info.id}
-              to={"/restaurant/" + restuarant.info.id}
-            >
-              <ResCard resdata={restuarant} />
-            </Link>
-          ))}
-        </div>
+        {filterRes.map((restuarant) => (
+          <Link
+            key={restuarant.info.id}
+            to={"/restaurant/" + restuarant.info.id}
+          >
+            <ResCard resdata={restuarant} />
+          </Link>
+        ))}
       </div>
     </div>
   );

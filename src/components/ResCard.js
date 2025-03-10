@@ -1,13 +1,21 @@
 const ResCard = (prop) => {
   const { resdata } = prop;
-  const { cloudinaryImageId, name, avgRating, cuisines, sla} = resdata?.info;
+  const { cloudinaryImageId, name, avgRating, cuisines, sla } = resdata?.info;
   // OBJ destrcturing
   // const {restoname, dish, rating, avgtime} = prop;
 
   return (
-    <div className="rescard">
-      <img className="itemImage" src= {"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}/>
-      <h3 style={{ textAlign: "center" }}>{name}</h3>
+    <div
+      className="rescard m-4 p-4 w-[200px] rounded-lg bg-gray-100 hover:bg-gray-200"
+    >
+      <img
+        className="itemImage rounded-lg"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          cloudinaryImageId
+        }
+      />
+      <h3 className="font-bold" style={{ textAlign: "center" }}>{name}</h3>
       <h4>
         {avgRating} <br></br>
         {cuisines}

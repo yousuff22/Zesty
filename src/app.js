@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,6 +9,15 @@ import ErrorCom from "./pages/ErrorCom";
 import RestsoMenu from "./components/RestsoMenu";
 
 // How comes  data from the backend
+
+// chunking
+// code spliting
+// dynamic bundling
+// lazy loading
+// onDemand loading
+// dynamic import
+
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const App = () => {
   return (
@@ -38,6 +47,14 @@ const approuter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          // <Suspense fallback={<h1>Loading ... </h1>}>
+          // </Suspense>
+            <Grocery />
+        ),
       },
       {
         path: "/restaurant/:resId",
