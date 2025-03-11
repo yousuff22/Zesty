@@ -1,7 +1,6 @@
-import ResCard from "./ResCard"; // defalut import
+import ResCard, { isopne } from "./ResCard"; // defalut import
 import { useEffect, useState } from "react"; // named import
 import Shimmer from "./Shimmer";
-import resList from "../utils/mockData";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/customhook/useOnlineStatus";
 
@@ -57,12 +56,15 @@ let DemoListJS = [
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdWPzgJkstd0rds9qWiBde--Dw_4sB-FdGSg&s",
   },
 ];
+
 const Body = () => {
   // Local State variable
   let [DemoList, setDemoList] = useState([]);
   const [filterRes, setfilterRes] = useState([]);
 
   let [searchText, setsearchText] = useState("");
+
+  const RestuarantIsOpen = isopne(ResCard);
 
   useEffect(() => {
     fetchData();
@@ -92,7 +94,7 @@ const Body = () => {
     );
 
   // conditional Rendering
-  return DemoList.length === 0 ? (
+  return filterRes.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="Body">
@@ -157,7 +159,11 @@ const Body = () => {
             key={restuarant.info.id}
             to={"/restaurant/" + restuarant.info.id}
           >
-            <ResCard resdata={restuarant} />
+            {restuarant.info.isOpen ? (
+              <RestuarantIsOpen resdata={restuarant} />
+            ) : (
+              <ResCard resdata={restuarant} />
+            )}
           </Link>
         ))}
       </div>

@@ -11,10 +11,7 @@ export const Header = () => {
   // if the dependency is LoginBtnState => called on every time when LoginBtnState is updated
 
   useEffect(() => {
-    console.log("useEffect called");
   }, [LoginBtnState]);
-
-  console.log("Header called");
 
   const onlineStatus = useOnlineStatus();
 

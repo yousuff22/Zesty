@@ -25,4 +25,20 @@ const ResCard = (prop) => {
   );
 };
 
+// Higher Order Function
+
+// input - Resturante Card => Resturante isopen
+
+export const isopne = (ResCard) => {
+  // function component which return some piece of JSX
+  return (prop) => {
+    return (
+      <div>
+        <label className="absolute bg-orange-200 text-black mx-2 p-1 rounded-sm font-bold">Open</label>
+        <ResCard {...prop}/>
+      </div>
+    )
+  }
+}
+
 export default ResCard;
