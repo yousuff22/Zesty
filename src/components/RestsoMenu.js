@@ -2,11 +2,14 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useRestsoMenu from "../utils/customhook/useRestsoMenu";
 import ResturanteCategories from "./ResturanteCategories";
+import { useState } from "react";
 
 const RestsoMenu = () => {
   const { resId } = useParams();
 
   const resInfo = useRestsoMenu(resId);
+
+  const [showIndex, setshowIndex] = useState(null);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -23,9 +26,6 @@ const RestsoMenu = () => {
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-    console.log(categories);
-
-  console.log(resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
   return (
     <div className="text-center">
@@ -35,8 +35,14 @@ const RestsoMenu = () => {
       </h3>
       <h2 className="font-bold text-lg">{costForTwoMessage}</h2>
 
-      {categories.map((category,index) => (
-        <ResturanteCategories key={index} data={category?.card?.card} />
+      {categories.map((category, index) => (
+        // controlled component
+        <ResturanteCategories
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          showItems={index == showIndex ? true : false}
+          setshowIndex={() => setshowIndex(index)}
+        />
       ))}
     </div>
   );

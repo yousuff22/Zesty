@@ -30,7 +30,7 @@ class UserClass extends React.Component {
     const { name, location, avatar_url } = this.state.userInfo;
 
     return (
-      <div className="user-card">
+      <div className="flex m-4">
         {/* <h1>Count {count}</h1> */}
         {/* <button
           onClick={() => {
@@ -42,12 +42,14 @@ class UserClass extends React.Component {
           Increase Count
         </button> */}
         <img
-          className="user-image"
+          className="w-24 rounded-t-full rounded-b-full"
           src="https://avatars.githubusercontent.com/u/175668381?v=4"
         ></img>
-        <h1>Name: {name}</h1>
-        <p>Location: {location}</p>
-        <p>contact: yousuf@contact</p>
+        <div className="mx-5">
+          <h1 className="">Name: {name}</h1>
+          <p>Location: {location}</p>
+          <p>contact: yousuf@contact</p>
+        </div>
       </div>
     );
   }

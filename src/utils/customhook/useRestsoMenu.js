@@ -2,7 +2,7 @@ import { use, useEffect, useState } from "react";
 import { menuApiUrl } from "../constants";
 
 const useRestsoMenu = (resId) => {
-    const [resInfo, setresInfo] = useState(null);
+  const [resInfo, setresInfo] = useState(null);
 
   useEffect(() => {
     fetchData();

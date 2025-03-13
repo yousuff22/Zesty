@@ -1,13 +1,9 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
 
-const ResturanteCategories = ({ data }) => {
-
-    const [showItems, setshowItems] = useState(false);
-
-    const handleClick = () => {
-        showItems ? setshowItems(false) : setshowItems(true);
-    }
+const ResturanteCategories = ({ data, showItems, setshowIndex }) => {
+  const handleClick = () => {
+    setshowIndex();
+  };
 
   return (
     <div>
@@ -22,7 +18,7 @@ const ResturanteCategories = ({ data }) => {
           </span>
           <span>⬇️</span>
         </div>
-        { showItems && <ItemList items={data.itemCards} />}
+        {showItems && <ItemList items={data.itemCards} />}
       </div>
 
       {/* Accordain Body */}
