@@ -37,3 +37,12 @@ Most IMP Hooks
 
 - client side routing
 - server side routing
+
+# redux tool-kit
+
+- Installed @reduxjs/toolkit and react redux libraries
+- Build our store
+- connect our store to our app
+- Slice (cartSlice)
+- Dispatch(action)
+- Selector

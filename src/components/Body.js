@@ -1,8 +1,9 @@
 import ResCard, { isopne } from "./ResCard"; // defalut import
-import { useEffect, useState } from "react"; // named import
+import { useContext, useEffect, useState } from "react"; // named import
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/customhook/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 let DemoListJS = [
   {
@@ -65,6 +66,8 @@ const Body = () => {
   let [searchText, setsearchText] = useState("");
 
   const RestuarantIsOpen = isopne(ResCard);
+
+  const { loggedInUser, setuserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -133,6 +136,12 @@ const Body = () => {
         >
           Top Rated Restuarant
         </button>
+
+        <label>UserName : </label>
+        <input className="p-2 border border-black" onChange={(e) => {
+          value= {loggedInUser}
+          setuserName(e.target.value)
+        }}></input>
       </div>
       <div className="flex flex-wrap justify-center">
         {/* for hardcoded values... */}

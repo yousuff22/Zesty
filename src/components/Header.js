@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants"; // named export
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/customhook/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Header = () => {
   const [LoginBtnState, setLoginBtnState] = useState("Login");
@@ -16,7 +17,10 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const data = useContext(UserContext);
-  console.log(data);
+
+  // subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   
 
   return (
@@ -38,6 +42,9 @@ export const Header = () => {
           </li>
           <li className="px-2">
             <Link to={"/grocery"}>Grocery</Link>
+          </li>
+          <li className="px-2 font-bold">
+            <Link to="/cart">Cart ({cartItems.length} Items )</Link>
           </li>
           <button
             className="px-2"

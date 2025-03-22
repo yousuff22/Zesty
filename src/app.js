@@ -8,6 +8,9 @@ import Contact from "./pages/Contact";
 import ErrorCom from "./pages/ErrorCom";
 import RestsoMenu from "./components/RestsoMenu";
 import UserContext from "./utils/UserContext";
+import Cart from "./pages/Cart";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // How comes  data from the backend
 
@@ -18,12 +21,12 @@ import UserContext from "./utils/UserContext";
 // onDemand loading
 // dynamic import
 
-const Grocery = lazy(() => import("./components/Grocery"));
+const Grocery = lazy(() => import("./pages/Grocery"));
 
 const App = () => {
   const [userName, setuserName] = useState();
 
-  //
+  // Authenticaltion
   useEffect(() => {
     // making a api call for the user data
     const data = {
@@ -33,17 +36,23 @@ const App = () => {
     setuserName(data.UserName);
   }, []);
 
+  
+
   return (
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      <div className="App">
-        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
-          <Header />
-        </UserContext.Provider>
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setuserName }}>
+        <div className="App">
+          <UserContext.Provider value={{ loggedInUser: userName }}>
+            <Header />
+          </UserContext.Provider>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
+
+
 
 const approuter = createBrowserRouter([
   {
@@ -69,6 +78,10 @@ const approuter = createBrowserRouter([
           // </Suspense>
           <Grocery />
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurant/:resId",
