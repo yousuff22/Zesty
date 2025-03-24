@@ -1,3 +1,6 @@
+# To view the website you have to add CROS chrome extension on your browser
+
+
 # Parcel 
 
 - Dev bulid
