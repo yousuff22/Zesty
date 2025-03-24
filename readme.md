@@ -1,4 +1,4 @@
-# To view the website you have to add CROS chrome extension on your browser
+# To view the website you have to add CORS chrome extension on your browser
 
 
 # Parcel 
