@@ -3,7 +3,8 @@ import UserContext from "../utils/UserContext";
 
 const ResCard = (prop) => {
   const { resdata } = prop;
-  const {loggedInUser} = useContext(UserContext)
+
+  const { loggedInUser } = useContext(UserContext);
   const { cloudinaryImageId, name, avgRating, cuisines, sla } = resdata?.info;
   // OBJ destrcturing
   // const {restoname, dish, rating, avgtime} = prop;
@@ -28,7 +29,6 @@ const ResCard = (prop) => {
     </div>
   );
 };
-
 
 // Higher Order Function
 // input - Resturante Card => Resturante isopen

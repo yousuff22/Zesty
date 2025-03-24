@@ -46,3 +46,22 @@ Most IMP Hooks
 - Slice (cartSlice)
 - Dispatch(action)
 - Selector
+
+
+# Types of Testing (developer)
+- Unit Testing
+- Integration Testing
+- End to End Testing
+
+# setting Up Testing in out app 
+- Install React Testing library
+- Installed jest
+- Installed babel dependencies
+- configure babel
+- configure Parcel Config file to disable default babel transpilation
+- jest configuration
+  - Jest npx jest --init
+- Install jsdom library
+- Install @babel/preset-react - to make jsx work in test cases
+- Include @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom
