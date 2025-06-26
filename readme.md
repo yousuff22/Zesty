@@ -35,28 +35,28 @@ This project uses **Parcel**, a powerful web application bundler. Here’s what 
 ## 🔄 JavaScript Module Exports
 
 ### ➤ Default Export/Import
-```js
+
 // Export
 export default Component;
 
 // Import
 import Component from './path';
 
-⚛️ React Concepts
-🧠 React Hooks (Utility Functions by Facebook)
+# ⚛️ React Concepts
+# 🧠 React Hooks (Utility Functions by Facebook)
 
 useState() – Superpowered state variable in React.
 useEffect() – Runs after component mounts or state updates.
 React triggers the Reconciliation Cycle whenever a state variable updates, re-rendering the component.
 
 
-🧭 Web Routing
+# 🧭 Web Routing
 
 There are two types of routing in web development:
 Client-side Routing – Managed using libraries like React Router DOM.
 Server-side Routing – Managed on the backend (e.g., Node.js/Express).
 
-🛠 Redux Toolkit Integration
+# 🛠 Redux Toolkit Integration
 State management is handled using Redux Toolkit.
 
 Steps:
@@ -67,7 +67,7 @@ Create Slices (e.g., cartSlice)
 Use dispatch(action) to send actions
 Use useSelector() to read data from the store
 
-🧪 Testing Strategy
+# 🧪 Testing Strategy
 Testing is done using Jest and React Testing Library.
 
 ✅ Types of Testing:
@@ -76,7 +76,8 @@ Unit Testing
 Integration Testing
 End-to-End Testing
 
-🔧 Setup Instructions:
+# 🔧 Setup Instructions:
+
 1. Install React Testing Library
 npm install @testing-library/react
 
@@ -104,7 +105,7 @@ npm install jsdom
 7. Install @testing-library/jest-dom
 npm install @testing-library/jest-dom
 
-📌 About the Project
+# 📌 About the Project
 This is an online food delivery platform where users can browse and order meals. The application uses:
 
 React – UI development
@@ -113,7 +114,7 @@ React Router DOM – Navigation and routing
 Tailwind CSS – Modern utility-first styling
 Jest + React Testing Library – Unit and component testing
 
-🚀 Deployment History
+# 🚀 Deployment History
 Deployed via Vercel:
 
 ✅ Production – onlinefoodapp (3 months ago)
